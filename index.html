@@ -3,76 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ফ্রি বাংলা চ্যাটবট</title>
+    <title>HNiNH বাংলা চ্যাটবট</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Bengali Font (Noto Sans Bengali) -->
+    <script src="https://cdn/tailwindcss.com"></script>
+    <!-- Bengali Font (Noto Sans Bengali & Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Noto Sans Bengali', sans-serif;
+            font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
         }
-        #chat-window::-webkit-scrollbar {
-            width: 6px;
-        }
-        #chat-window::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        #chat-window::-webkit-scrollbar-thumb {
-            background: #d1d5db; /* gray-300 */
-            border-radius: 10px;
-        }
+        #chat-window::-webkit-scrollbar { width: 6px; }
+        #chat-window::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        #chat-window::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white w-full max-w-lg mx-auto shadow-2xl rounded-lg flex flex-col" style="height: 80vh;">
+    <div class="bg-white w-full max-w-2xl mx-auto shadow-2xl rounded-lg flex flex-col" style="height: 90vh;">
         
-        <!-- Header -->
-        <header class="bg-green-600 text-white p-4 rounded-t-lg">
-            <h1 class="text-xl font-bold">আমার সাধারণ চ্যাটবট</h1>
+        <header class="bg-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+            <h1 class="text-xl font-bold">HNiNH চ্যাটবট</h1>
+            <div class="flex items-center space-x-2">
+                <span class="text-xs">Web Search Enabled</span>
+                <svg xmlns="http://www.w.3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+            </div>
         </header>
 
-        <!-- Chat Window -->
         <main id="chat-window" class="flex-1 p-4 overflow-y-auto space-y-4">
-            <!-- Initial Bot Message -->
             <div class="flex justify-start">
-                <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs">
-                    <p>হ্যালো! আপনি আমাকে প্রশ্ন করতে পারেন।</p>
+                <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-xs md:max-w-md">
+                    <p>নমস্কার! আমি 'HNiNH'। আমি ওয়েব সার্চ করতে পারি। আপনার প্রশ্ন করুন।</p>
                 </div>
             </div>
         </main>
 
-        <!-- Loading Indicator (for simulated typing) -->
-        <div id="loading-indicator" class="p-4 hidden flex items-center space-x-2">
-            <div class="w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:-0.3s]"></div>
-            <div class="w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:-0.15s]"></div>
-            <div class="w-2 h-2 bg-gray-500 rounded-full animate-pulse"></div>
+        <div id="loading-indicator" class="p-4 hidden flex items-center justify-center">
+            <div class="flex items-center space-x-2 text-gray-500">
+                <div class="w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:-0.3s]"></div>
+                <div class="w-2 h-2 bg-gray-500 rounded-full animate-pulse [animation-delay:-0.15s]"></div>
+                <div class="w-2 h-2 bg-gray-500 rounded-full animate-pulse"></div>
+                <span class="text-sm">HNiNH ভাবছে...</span>
+            </div>
         </div>
 
-        <!-- Input Area -->
         <footer class="bg-white border-t p-4 rounded-b-lg">
             <div class="flex">
                 <input 
                     type="text" 
                     id="message-input" 
-                    placeholder="এখানে লিখুন..."
-                    class="flex-1 border rounded-l-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    placeholder="এখানে আপনার প্রশ্ন লিখুন..."
+                    class="flex-1 border rounded-l-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                 <button 
                     id="send-button"
-                    class="bg-green-600 text-white p-3 rounded-r-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    class="bg-blue-600 text-white p-3 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <svg xmlns="http://www.w.3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
                     </svg>
                 </button>
             </div>
         </footer>
-
     </div>
 
     <script>
@@ -80,6 +75,9 @@
         const messageInput = document.getElementById('message-input');
         const sendButton = document.getElementById('send-button');
         const loadingIndicator = document.getElementById('loading-indicator');
+
+        // This holds the entire conversation history
+        let chatHistory = [];
 
         sendButton.addEventListener('click', handleSendMessage);
         messageInput.addEventListener('keydown', (e) => {
@@ -89,77 +87,68 @@
             }
         });
 
-        function handleSendMessage() {
+        async function handleSendMessage() {
             const userMessage = messageInput.value.trim();
             if (userMessage === '') return;
 
             displayMessage('user', userMessage);
+            chatHistory.push({ role: 'user', parts: [{ text: userMessage }] });
+
             messageInput.value = '';
-
-            // Simulate bot thinking
             loadingIndicator.classList.remove('hidden');
-            sendButton.disabled = true;
-            messageInput.disabled = true;
 
-            setTimeout(() => {
-                const botResponse = getBotResponse(userMessage);
+            try {
+                // This is the SAFE way. We call our *own* backend, not Google's.
+                // This path '/api/chat' will work when deployed to Vercel or Netlify.
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ history: chatHistory })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.statusText}`);
+                }
+
+                const { text, sources } = await response.json();
+
+                chatHistory.push({ role: 'model', parts: [{ text: text }] });
+                displayMessage('bot', text, sources);
+
+            } catch (error) {
+                console.error("Fetch Error:", error);
+                displayMessage('bot', 'দুঃখিত, সার্ভারে একটি সমস্যা হয়েছে। API কী ঠিক আছে কিনা দেখুন।');
+            } finally {
                 loadingIndicator.classList.add('hidden');
-                displayMessage('bot', botResponse);
-                
-                sendButton.disabled = false;
-                messageInput.disabled = false;
-                messageInput.focus();
-            }, 1000); // 1 second delay
+            }
         }
 
-        /**
-         * This is the "brain" of your free bot.
-         * Add all your rules here.
-         */
-        function getBotResponse(userInput) {
-            const text = userInput.toLowerCase().trim();
-
-            // --- Add your rules below ---
-            
-            if (text.includes("কেমন আছো") || text.includes("কেমন আছেন")) {
-                return "আমি ভালো আছি, ধন্যবাদ! আপনার দিন কেমন যাচ্ছে?";
-            }
-
-            if (text.includes("তোমার নাম কি") || text.includes("আপনার নাম কি")) {
-                return "আমার কোনো নাম নেই, আমি একটি সাধারণ চ্যাটবট।";
-            }
-            
-            if (text.includes("হাই") || text.includes("হ্যালো") || text.includes("সালাম")) {
-                return "হ্যালো! আমি আপনাকে কিভাবে সাহায্য করতে পারি?";
-            }
-
-            if (text.includes("ধন্যবাদ")) {
-                return "আপনাকেও স্বাগতম!";
-            }
-
-            if (text.includes("কে তৈরি করেছে") || text.includes("তোমাকে কে বানিয়েছে")) {
-                return "একজন ডেভেলপার আমাকে জাভাস্ক্রিপ্ট দিয়ে তৈরি করেছেন।";
-            }
-            
-            if (text.includes("আজকের তারিখ")) {
-                return "দুঃখিত, আমি বাস্তব সময় জানি না। আমি শুধু প্রোগ্রাম করা উত্তর দিতে পারি।";
-            }
-
-            // --- Default Fallback Rule ---
-            return "দুঃখিত, আমি আপনার কথাটি বুঝতে পারিনি। আপনি অন্যভাবে চেষ্টা করতে পারেন।";
-        }
-
-        function displayMessage(sender, message) {
+        function displayMessage(sender, message, sources = []) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('flex', sender === 'user' ? 'justify-end' : 'justify-start');
 
-            const contentHTML = `
-                <div class="p-3 rounded-lg max-w-xs md:max-w-md ${sender === 'user' ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-800'}">
-                    <p>${message}</p>
+            let contentHTML = `<p class="whitespace-pre-wrap">${message}</p>`;
+
+            if (sender === 'bot' && sources.length > 0) {
+                let sourcesHTML = '<hr class="my-2 border-gray-400"><p class="text-xs font-semibold mb-1">তথ্যসূত্র:</p><ul class="list-disc list-inside text-xs">';
+                const uniqueSources = new Map();
+                sources.forEach(source => {
+                    if (source && source.uri && !uniqueSources.has(source.uri)) {
+                        uniqueSources.set(source.uri, source);
+                    }
+                });
+                uniqueSources.forEach(source => {
+                    sourcesHTML += `<li><a href="${source.uri}" target="_blank" class="text-blue-700 hover:underline">${source.title}</a></li>`;
+                });
+                sourcesHTML += '</ul>';
+                contentHTML += sourcesHTML;
+            }
+
+            messageElement.innerHTML = `
+                <div class="p-3 rounded-lg max-w-xs md:max-w-md ${sender === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'}">
+                    ${contentHTML}
                 </div>
             `;
-            
-            messageElement.innerHTML = contentHTML;
             chatWindow.appendChild(messageElement);
             chatWindow.scrollTop = chatWindow.scrollHeight;
         }
